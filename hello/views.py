@@ -8,6 +8,9 @@ def index(request):
     # return HttpResponse('Hello from Python!')
     return render(request, "index.html")
 
+def createAccount(request):
+    return render(request, "createAccount.html")
+
 
 def db(request):
 

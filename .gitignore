@@ -4,3 +4,10 @@ staticfiles
 .env
 db.sqlite3
 getting-started/*
+.babelrc
+node_modules
+package-lock.json
+package.json
+webpack-stats.json
+webpack.config.js
+hello/dist
