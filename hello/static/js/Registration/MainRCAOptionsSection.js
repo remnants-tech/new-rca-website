@@ -2,7 +2,7 @@
   This is the main RCA option section in the second part of registration page
 
   @author: Jae Won Kwon <jaewonrt@gmail.com>
-  @date: 2/11/19
+  date: 2/11/19
 */
 
 import React from 'react';
@@ -17,8 +17,9 @@ import Radio from '@material-ui/core/Radio';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
+import {secondPartStateNames} from './RegistrationConstants'
 
-export const MainRCAOptionsSection = () => {
+export const MainRCAOptionsSection = (props) => {
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -30,54 +31,64 @@ export const MainRCAOptionsSection = () => {
             <FormLabel component="legend">Lodging options</FormLabel>
             <RadioGroup
               aria-label="LodgingOptions"
-              name="lodgingOptions"
+              name={secondPartStateNames.lodgingOptions}
+              value={props[secondPartStateNames.lodgingOptions]}
+              onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.lodgingOptions, true, false)}}
               >
-              <FormControlLabel value="fourPeopleRoom" control={<Radio/>} label="4 people room" />
-              <FormControlLabel value="twoPeopleRoom" control={<Radio/>} label="2 people room" />
+              // TODO: insert dolor values
+                <FormControlLabel value="fourPeopleRoom" control={<Radio/>} label="4 people room" />
+                <FormControlLabel value="twoPeopleRoom" control={<Radio/>} label="2 people room" />
             </RadioGroup>
           </FormControl>
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            id="select-shirt-size"
+            id={secondPartStateNames.selectShirtSize}
             select
             label="Select T-shirt size"
             fullWidth
+            value={props[secondPartStateNames.selectShirtSize]}
+            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.selectShirtSize, true, false)}}
             >
-            <MenuItem key="small" value="small">Small</MenuItem>
-            <MenuItem key="medium" value="medium">Medium</MenuItem>
-            <MenuItem key="large" value="large">Large</MenuItem>
+            // TODO: include more menu items and refactor if necessary
+              <MenuItem key="small" value="small">Small</MenuItem>
+              <MenuItem key="medium" value="medium">Medium</MenuItem>
+              <MenuItem key="large" value="large">Large</MenuItem>
           </TextField>
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            id="select-volunteer-option"
+            id={secondPartStateNames.selectVolunteerOption}
             select
             label="Volunteer to serve as a staff"
             fullWidth
+            value={props[secondPartStateNames.selectVolunteerOption]}
+            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.selectVolunteerOption, true, false)}}
             >
-            <MenuItem key="yes" value="yes">Yes, I'd like to volunteer</MenuItem>
-            <MenuItem key="no" value="no">No, I don't want to volunteer</MenuItem>
+              <MenuItem key="yes" value="yes">Yes, I'd like to volunteer</MenuItem>
+              <MenuItem key="no" value="no">No, I don't want to volunteer</MenuItem>
           </TextField>
         </Grid>
         <Grid item xs={12} sm={12}>
           <TextField
-            id="healthCondition"
-            name="healthCondition"
+            id={secondPartStateNames.healthCondition}
+            name={secondPartStateNames.healthCondition}
             label="Health Condition"
             fullWidth
-            autoComplete="healthCondition"
             helperText="Tell us if you have special condition"
+            value={props[secondPartStateNames.healthCondition]}
+            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.healthCondition, true, false)}}
           />
         </Grid>
         <Grid item xs={12} sm={12}>
           <TextField
-            id="prayerTopic"
-            name="prayerTopic"
+            id={secondPartStateNames.prayerTopic}
+            name={secondPartStateNames.prayerTopic}
             label="Prayer Topic"
             fullWidth
-            autoComplete="prayerTopic"
             helperText="Write your prayer topic"
+            value={props[secondPartStateNames.prayerTopic]}
+            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.prayerTopic, true, false)}}
           />
         </Grid>
       </Grid>

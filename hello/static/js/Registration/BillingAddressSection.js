@@ -2,7 +2,7 @@
   This is the billing address section in the second part of registration page
 
   @author: Jae Won Kwon <jaewonrt@gmail.com>
-  @date: 2/11/19
+  date: 2/11/19
 */
 
 import React from 'react';
@@ -17,8 +17,10 @@ import Radio from '@material-ui/core/Radio';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Checkbox from '@material-ui/core/Checkbox';
+import {secondPartStateNames} from './RegistrationConstants'
 
-export const BillingAddressSection = () => {
+// TODO: change the stylistic layout so it looks more like the sample received
+export const BillingAddressSection = (props) => {
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -31,6 +33,8 @@ export const BillingAddressSection = () => {
               <Checkbox
                 value="Billing address is same as My address"
                 color="primary"
+                checked={props[secondPartStateNames.billingAddressCheckBox]}
+                onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.billingAddressCheckBox, true, true)}}
               />
             }
             label="Would you like to save this card for the future?"
@@ -38,65 +42,72 @@ export const BillingAddressSection = () => {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            id="firstName"
-            name="firstName"
+            id={secondPartStateNames.billingAddressFirstName}
+            name={secondPartStateNames.billingAddressFirstName}
             label="First name"
             fullWidth
-            autoComplete="firstName"
+            value={props[secondPartStateNames.billingAddressFirstName]}
+            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.billingAddressFirstName, true, false)}}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            id="lastName"
-            name="lastName"
+            id={secondPartStateNames.billingAddressLastName}
+            name={secondPartStateNames.billingAddressLastName}
             label="Last Name"
             fullWidth
-            autoComplete="expirationDate"
+            value={props[secondPartStateNames.billingAddressLastName]}
+            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.billingAddressLastName, true, false)}}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            id="Streetaddress"
-            name="streetAddress"
+            id={secondPartStateNames.billingAddressStreetAddress}
+            name={secondPartStateNames.billingAddressStreetAddress}
             label="Street Address"
             fullWidth
-            autoComplete="expirationDate"
+            value={props[secondPartStateNames.billingAddressStreetAddress]}
+            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.billingAddressStreetAddress, true, false)}}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            id="companyAptEtc"
-            name="companyAptEtc"
+            id={secondPartStateNames.billingAddressCompanyAptEtc}
+            name={secondPartStateNames.billingAddressCompanyAptEtc}
             label="Company,Apt,Suit, Unit"
             fullWidth
-            autoComplete="companyAptEtc"
+            value={props[secondPartStateNames.billingAddressStreetAddress]}
+            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.billingAddressStreetAddress, true, false)}}
           />
         </Grid>
         <Grid item xs={12} sm={4}>
           <TextField
-            id="city"
-            name="city"
+            id={secondPartStateNames.billingAddressCity}
+            name={secondPartStateNames.billingAddressCity}
             label="City"
             fullWidth
-            autoComplete="city"
+            value={props[secondPartStateNames.billingAddressCity]}
+            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.billingAddressCity, true, false)}}
           />
         </Grid>
         <Grid item xs={12} sm={4}>
           <TextField
-            id="state"
-            name="state"
+            id={secondPartStateNames.billingAddressState}
+            name={secondPartStateNames.billingAddressState}
             label="State"
             fullWidth
-            autoComplete="state"
+            value={props[secondPartStateNames.billingAddressState]}
+            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.billingAddressState, true, false)}}
           />
         </Grid>
         <Grid item xs={12} sm={4}>
           <TextField
-            id="postalCode"
-            name="postalCode"
+            id={secondPartStateNames.billingAddressPostalCode}
+            name={secondPartStateNames.billingAddressPostalCode}
             label="Postal Code"
             fullWidth
-            autoComplete="postalCode"
+            value={props[secondPartStateNames.billingAddressPostalCode]}
+            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.billingAddressPostalCode, true, false)}}
           />
         </Grid>
       </Grid>

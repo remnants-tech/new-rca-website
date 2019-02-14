@@ -1,3 +1,10 @@
+/**
+   Registration card component of registration page.
+
+   @author: Jae Won Kwon <jaewonrt@gmail.com>
+   date: 2/14/19
+*/
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -8,40 +15,31 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import {RegistrationSecondPart} from './Registration/RegistrationSecondPartComponent';
 import {RegistrationFirstPart} from './Registration/RegistrationFirstPartComponent';
-import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import {firstPartStates} from './Registration/RegistrationConstants';
+import {secondPartStates} from './Registration/RegistrationConstants';
 
-const NextButton = (styleInput, handleForward) => {
-  return (
-    <Button variant="contained" color="primary" className= {styleInput} onClick={() => handleForward}>
-      Next
-      <ArrowForwardIosIcon />
-    </Button>
-  )
-}
-
-const BackButton = (styleInput, handleBack) => {
-  return (
-    <Button variant="contained" color="primary" className= {styleInput} onClick={() => handleBack}>
-      <ArrowBackIosIcon />
-      Back
-    </Button>
-  )
-}
+const FIRST_PART_STATE = "firstPartStates";
+const SECOND_PART_STATE = "secondPartStates";
 
 class RegistrationCardComponent extends React.Component {
   state = {
-    isFirstPage: true
+    isFirstPage: true,
+    firstPartStates,
+    secondPartStates
   }
 
-  handleForward = () => {
-    this.setState({isFirstPage:false});
+  handleRegistrationPageChange = () => {
+    this.setState((prevState) => {isFirstPage: !prevState.isFirstPage});
   }
 
-  handleBack = () => {
-    this.setState({isFirstPage:true});
+  handleFieldInputChange = (newValue, id, isFirstPart, isCheckBox) => {
+    const pageState = isFirstPart ? FIRST_PART_STATE : SECOND_PART_STATE;
+    this.setState({
+      [pageState]: {
+        ...this.state[pageState],
+        [id]: (isCheckBox ? newValue.target.checked : newValue.target.value)
+      }
+    })
   }
 
   render() {
@@ -52,18 +50,13 @@ class RegistrationCardComponent extends React.Component {
           <Typography component="h1" variant="h4" allign="center">
             Register for Remnant Conference of America
           </Typography>
-          {this.state.isFirstPage ? <RegistrationFirstPart /> : <RegistrationSecondPart />}
           {this.state.isFirstPage ?
-            (<Button variant="contained" color="primary" className= {classes.nextButton} onClick={this.handleForward.bind(this)} >
-              Next
-              <ArrowForwardIosIcon />
-            </Button>) :
-            (
-              <Button variant="contained" color="primary" className= {classes.nextButton} onClick={this.handleBack.bind(this)}>
-                <ArrowBackIosIcon />
-                Back
-              </Button>
-            )
+            <RegistrationFirstPart {...this.state[FIRST_PART_STATE]}
+              handleFieldInputChange= {this.handleFieldInputChange.bind(this)}
+              handleButtonChange= {this.handleRegistrationPageChange.bind(this)} /> :
+            <RegistrationSecondPart {...this.state[SECOND_PART_STATE]}
+              handleFieldInputChange= {this.handleFieldInputChange.bind(this)}
+              handleButtonChange= {this.handleRegistrationPageChange.bind(this)} />
           }
         </Paper>
       </React.Fragment>

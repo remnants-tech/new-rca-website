@@ -12,8 +12,9 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
+import {firstPartStateNames} from './RegistrationConstants';
 
-export const FieldInformationSection = () => {
+export const FieldInformationSection = (props) => {
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -23,40 +24,45 @@ export const FieldInformationSection = () => {
         <Grid item xs={12} sm={4}>
           <TextField
             required
-            id="schoolName"
-            name="schoolName"
+            id={firstPartStateNames.schoolName}
+            name={firstPartStateNames.schoolName}
             label="School"
             fullWidth
-            autoComplete="school"
+            value={props[firstPartStateNames.schoolName]}
+            onChange={(newValue) => {props.handleFieldInputChange(newValue,firstPartStateNames.schoolName, true, false)}}
           />
         </Grid>
         <Grid item xs={12} sm={4}>
           <TextField
             required
-            id="gradeLevel"
-            name="gradeLevel"
+            id={firstPartStateNames.gradeLevel}
+            name={firstPartStateNames.gradeLevel}
             label="Grade"
             fullWidth
-            autoComplete="grade"
+            value={props[firstPartStateNames.gradeLevel]}
+            onChange={(newValue) => {props.handleFieldInputChange(newValue,firstPartStateNames.gradeLevel, true, false)}}
           />
         </Grid>
         <Grid item xs={12} sm={4}>
           <TextField
             optional
-            id="major"
-            name="major"
+            id={firstPartStateNames.gradeLevel}
+            name={firstPartStateNames.gradeLevel}
             label="Major"
             fullWidth
-            autoComplete="major"
+            value={props[firstPartStateNames.gradeLevel]}
+            onChange={(newValue) => {props.handleFieldInputChange(newValue,firstPartStateNames.gradeLevel, true, false)}}
           />
         </Grid>
         <Grid item xs={12} sm={4}>
           <TextField
-            id="select-area-of-interest"
+            id={firstPartStateNames.selectAreaOfInterest}
             fullWidth
             select
             label="Select area of interest/specialty"
             helperText="Select your area of interest or specialty"
+            value={props[firstPartStateNames.selectAreaOfInterest]}
+            onChange={(newValue) => {props.handleFieldInputChange(newValue,firstPartStateNames.selectAreaOfInterest, true, false)}}
             >
             <MenuItem key="accounting" value="accounting">Accounting</MenuItem>
             <MenuItem key="finance" value="finance">Finance</MenuItem>
@@ -65,21 +71,25 @@ export const FieldInformationSection = () => {
         <Grid item xs={12} sm={4}>
           <TextField
             optional
-            id="company"
-            name="company"
+            id={firstPartStateNames.company}
+            name={firstPartStateNames.company}
             label="Company"
             fullWidth
             autoComplete="company"
+            value={props[firstPartStateNames.company]}
+            onChange={(newValue) => {props.handleFieldInputChange(newValue,firstPartStateNames.company, true, false)}}
           />
         </Grid>
         <Grid item xs={12} sm={4}>
           <TextField
             optional
-            id="title"
-            name="title"
+            id={firstPartStateNames.title}
+            name={firstPartStateNames.title}
             label="Title (Company)"
             fullWidth
             autoComplete="company"
+            value={props[firstPartStateNames.title]}
+            onChange={(newValue) => {props.handleTextValueChange(newValue,firstPartStateNames.title, true, false)}}
           />
         </Grid>
       </Grid>

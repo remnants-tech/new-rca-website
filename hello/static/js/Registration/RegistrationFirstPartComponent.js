@@ -4,13 +4,26 @@ import { withStyles } from '@material-ui/core/styles';
 import {FieldInformationSection} from './FieldInformationSection';
 import {BasicInformationSection} from './BasicInformationSection';
 import {ChurchInformationSection} from './ChurchInformationSection';
+import Icon from '@material-ui/core/Icon';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import Button from '@material-ui/core/Button';
 
-export const RegistrationFirstPart = () => {
+const NextButton = (props) => {
+  return (
+    <Button variant="contained" color="primary" className= {props.styleInput} onChange={() => props.handleButtonChange}>
+      Next
+      <ArrowForwardIosIcon />
+    </Button>
+  )
+}
+
+export const RegistrationFirstPart = (props) => {
   return (
     <React.Fragment>
-      <FieldInformationSection />
-      <BasicInformationSection />
-      <ChurchInformationSection />
+      <FieldInformationSection {...props} />
+      <BasicInformationSection {...props}/>
+      <ChurchInformationSection {...props}/>
+      <NextButton styleInput={props.styleInput} handleChange={() => props.handleChange} />
     </React.Fragment>
   )
 }
