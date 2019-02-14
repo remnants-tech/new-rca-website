@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import NavBar from './navbarComponent'
+import NavBar from '../navbarComponent'
 import CreateAccountContainer from './CreateAccountContainer'
 
 
-class App extends React.Component {
+class CreateAccountPage extends React.Component {
   render () {
     return (
       <div>
@@ -20,7 +20,7 @@ class App extends React.Component {
 }
 
 
-const element = <App name="world" />;
+const element = <CreateAccountPage name="createAccountPage" />;
 ReactDOM.render(
   element,
   document.getElementById('create-account')

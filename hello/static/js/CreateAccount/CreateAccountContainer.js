@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-import {registrationCardStyles} from '././styleConstants'
+import {registrationCardStyles} from '../styleConstants'
 import {CreateAccountBasicInformationSection} from './CreateAccountBasicInformationSection';
 import Button from '@material-ui/core/Button';
 
 class CreateAccountContainer extends React.Component {
   render() {
+    const { classes } = this.props;
     return (
       <React.Fragment>
         <Paper className= {classes.paper}>
