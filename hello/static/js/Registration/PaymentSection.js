@@ -34,7 +34,7 @@ export const PaymentSection = (props) => {
               name={secondPartStateNames.paymentMethods}
               row
               value={props[secondPartStateNames.paymentMethods]}
-              onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.paymentMethods, true, false)}}
+              onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.paymentMethods, false, false)}}
             >
             // TODO: add more methods if neccessary
               <FormControlLabel
@@ -60,7 +60,7 @@ export const PaymentSection = (props) => {
             fullWidth
             autoComplete="cardNumber"
             value={props[secondPartStateNames.cardNumber]}
-            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.cardNumber, true, false)}}
+            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.cardNumber, false, false)}}
           />
         </Grid>
         <Grid item xs={12} sm={3}>
@@ -71,7 +71,7 @@ export const PaymentSection = (props) => {
             fullWidth
             autoComplete="expirationDate"
             value={props[secondPartStateNames.expirationDate]}
-            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.expirationDate, true, false)}}
+            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.expirationDate, false, false)}}
           />
         </Grid>
         <Grid item xs={12} sm={2}>
@@ -82,7 +82,7 @@ export const PaymentSection = (props) => {
             fullWidth
             autoComplete="securityCode"
             value={props[secondPartStateNames.securityCode]}
-            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.securityCode, true, false)}}
+            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.securityCode, false, false)}}
           />
         </Grid>
         <Grid item xs={12} sm={12}>
@@ -92,7 +92,7 @@ export const PaymentSection = (props) => {
                 value="Would you like to save this card for the future?"
                 color="primary"
                 checked={props[secondPartStateNames.saveCardCheckBox]}
-                onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.saveCardCheckBox, true, true)}}
+                onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.saveCardCheckBox, false, true)}}
               />
             }
             label="Would you like to save this card for the future?"

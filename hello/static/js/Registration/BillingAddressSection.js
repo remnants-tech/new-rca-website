@@ -34,7 +34,7 @@ export const BillingAddressSection = (props) => {
                 value="Billing address is same as My address"
                 color="primary"
                 checked={props[secondPartStateNames.billingAddressCheckBox]}
-                onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.billingAddressCheckBox, true, true)}}
+                onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.billingAddressCheckBox, false, true)}}
               />
             }
             label="Would you like to save this card for the future?"
@@ -47,7 +47,7 @@ export const BillingAddressSection = (props) => {
             label="First name"
             fullWidth
             value={props[secondPartStateNames.billingAddressFirstName]}
-            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.billingAddressFirstName, true, false)}}
+            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.billingAddressFirstName, false, false)}}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -57,7 +57,7 @@ export const BillingAddressSection = (props) => {
             label="Last Name"
             fullWidth
             value={props[secondPartStateNames.billingAddressLastName]}
-            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.billingAddressLastName, true, false)}}
+            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.billingAddressLastName, false, false)}}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -67,7 +67,7 @@ export const BillingAddressSection = (props) => {
             label="Street Address"
             fullWidth
             value={props[secondPartStateNames.billingAddressStreetAddress]}
-            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.billingAddressStreetAddress, true, false)}}
+            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.billingAddressStreetAddress, false, false)}}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -77,7 +77,7 @@ export const BillingAddressSection = (props) => {
             label="Company,Apt,Suit, Unit"
             fullWidth
             value={props[secondPartStateNames.billingAddressStreetAddress]}
-            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.billingAddressStreetAddress, true, false)}}
+            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.billingAddressStreetAddress, false, false)}}
           />
         </Grid>
         <Grid item xs={12} sm={4}>
@@ -87,7 +87,7 @@ export const BillingAddressSection = (props) => {
             label="City"
             fullWidth
             value={props[secondPartStateNames.billingAddressCity]}
-            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.billingAddressCity, true, false)}}
+            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.billingAddressCity, false, false)}}
           />
         </Grid>
         <Grid item xs={12} sm={4}>
@@ -97,7 +97,7 @@ export const BillingAddressSection = (props) => {
             label="State"
             fullWidth
             value={props[secondPartStateNames.billingAddressState]}
-            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.billingAddressState, true, false)}}
+            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.billingAddressState, false, false)}}
           />
         </Grid>
         <Grid item xs={12} sm={4}>
@@ -107,7 +107,7 @@ export const BillingAddressSection = (props) => {
             label="Postal Code"
             fullWidth
             value={props[secondPartStateNames.billingAddressPostalCode]}
-            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.billingAddressPostalCode, true, false)}}
+            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.billingAddressPostalCode, false, false)}}
           />
         </Grid>
       </Grid>

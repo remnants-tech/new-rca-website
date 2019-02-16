@@ -33,9 +33,9 @@ export const MainRCAOptionsSection = (props) => {
               aria-label="LodgingOptions"
               name={secondPartStateNames.lodgingOptions}
               value={props[secondPartStateNames.lodgingOptions]}
-              onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.lodgingOptions, true, false)}}
+              onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.lodgingOptions, false, false)}}
               >
-              // TODO: insert dolor values
+              // TODO: insert dollar values
                 <FormControlLabel value="fourPeopleRoom" control={<Radio/>} label="4 people room" />
                 <FormControlLabel value="twoPeopleRoom" control={<Radio/>} label="2 people room" />
             </RadioGroup>
@@ -48,7 +48,7 @@ export const MainRCAOptionsSection = (props) => {
             label="Select T-shirt size"
             fullWidth
             value={props[secondPartStateNames.selectShirtSize]}
-            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.selectShirtSize, true, false)}}
+            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.selectShirtSize, false, false)}}
             >
             // TODO: include more menu items and refactor if necessary
               <MenuItem key="small" value="small">Small</MenuItem>
@@ -63,7 +63,7 @@ export const MainRCAOptionsSection = (props) => {
             label="Volunteer to serve as a staff"
             fullWidth
             value={props[secondPartStateNames.selectVolunteerOption]}
-            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.selectVolunteerOption, true, false)}}
+            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.selectVolunteerOption, false, false)}}
             >
               <MenuItem key="yes" value="yes">Yes, I'd like to volunteer</MenuItem>
               <MenuItem key="no" value="no">No, I don't want to volunteer</MenuItem>
@@ -77,7 +77,7 @@ export const MainRCAOptionsSection = (props) => {
             fullWidth
             helperText="Tell us if you have special condition"
             value={props[secondPartStateNames.healthCondition]}
-            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.healthCondition, true, false)}}
+            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.healthCondition, false, false)}}
           />
         </Grid>
         <Grid item xs={12} sm={12}>
@@ -88,7 +88,7 @@ export const MainRCAOptionsSection = (props) => {
             fullWidth
             helperText="Write your prayer topic"
             value={props[secondPartStateNames.prayerTopic]}
-            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.prayerTopic, true, false)}}
+            onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.prayerTopic, false, false)}}
           />
         </Grid>
       </Grid>

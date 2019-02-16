@@ -29,7 +29,7 @@ class RegistrationCardComponent extends React.Component {
   }
 
   handleRegistrationPageChange = () => {
-    this.setState((prevState) => {isFirstPage: !prevState.isFirstPage});
+    this.setState((prevState) => {return {isFirstPage: !prevState.isFirstPage}});
   }
 
   handleFieldInputChange = (newValue, id, isFirstPart, isCheckBox) => {

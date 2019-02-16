@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 
 const NextButton = (props) => {
   return (
-    <Button variant="contained" color="primary" className= {props.styleInput} onChange={() => props.handleButtonChange}>
+    <Button variant="contained" color="primary" className= {props.styleInput} onClick={props.handleButtonChange}>
       Next
       <ArrowForwardIosIcon />
     </Button>
@@ -23,7 +23,7 @@ export const RegistrationFirstPart = (props) => {
       <FieldInformationSection {...props} />
       <BasicInformationSection {...props}/>
       <ChurchInformationSection {...props}/>
-      <NextButton styleInput={props.styleInput} handleChange={() => props.handleChange} />
+      <NextButton styleInput={props.styleInput} handleButtonChange={props.handleButtonChange} />
     </React.Fragment>
   )
 }

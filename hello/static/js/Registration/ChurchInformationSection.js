@@ -19,7 +19,7 @@ export const ChurchInformationSection = (props) => {
       <Typography variant="h6" gutterBottom>
         Your church information
       </Typography>
-      // TODO: might want to store grid specs as constants for maintaining consistency
+      {/* TODO: might want to store grid specs as constants for maintaining consistency */}
       <Grid container spacing={8}>
         <Grid item xs={12} sm={6}>
           <TextField
@@ -30,7 +30,7 @@ export const ChurchInformationSection = (props) => {
             value={props[firstPartStateNames.selectChurchPosition]}
             onChange={(newValue) => {props.handleFieldInputChange(newValue,firstPartStateNames.selectChurchPosition, true, false)}}
             >
-            // TODO: insert more menu items and refactor if neccessary
+            {/* TODO: insert more menu items and refactor if neccessary */}
             <MenuItem key="remnant" value="remnant">Remnant</MenuItem>
             <MenuItem key="deacon" value="deacon">Deacon</MenuItem>
           </TextField>
@@ -44,8 +44,8 @@ export const ChurchInformationSection = (props) => {
             value={props[firstPartStateNames.selectTrainingLevel]}
             onChange={(newValue) => {props.handleFieldInputChange(newValue,firstPartStateNames.selectTrainingLevel, true, false)}}
             >
-            // TODO: insert more menu items and refactor if neccessary
-            <MenuItem key="first-level-camp" value="first-level-camp">1st Level Camp Training</MenuItem>
+            {/* TODO: insert more menu items and refactor if neccessary */}
+            <MenuItem key="first-level-camp" value="first-level-camp">First Level Camp Training</MenuItem>
           </TextField>
         </Grid>
         <Grid item xs={12} sm={12}>
@@ -58,7 +58,7 @@ export const ChurchInformationSection = (props) => {
             value={props[firstPartStateNames.selectChurchName]}
             onChange={(newValue) => {props.handleFieldInputChange(newValue,firstPartStateNames.selectChurchName, true, false)}}
             >
-            // TODO: insert more church names and refactor if neccessary
+            {/* TODO: insert more church names and refactor if neccessary */}
             <MenuItem key="one-mind-church" value="one-mind-church">One Mind Church</MenuItem>
             <MenuItem key="boston-immanuel" value="boston-immanuel">Boston Immanuel</MenuItem>
           </TextField>

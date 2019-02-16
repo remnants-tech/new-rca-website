@@ -17,7 +17,7 @@ import Button from '@material-ui/core/Button';
 
 const BackButton = (props) => {
   return (
-    <Button variant="contained" color="primary" className= {props.styleInput} onChange={() => props.handleButtonChange}>
+    <Button variant="contained" color="primary" className= {props.styleInput} onClick={props.handleButtonChange}>
       <ArrowBackIosIcon />
       Back
     </Button>
@@ -30,7 +30,7 @@ export const RegistrationSecondPart = (props) => {
       <MainRCAOptionsSection {...props} />
       <PaymentSection {...props} />
       <BillingAddressSection {...props} />
-      <BackButton styleInput={props.styleInput} handleButtonChange = {() => props.handleButtonChange} />
+      <BackButton styleInput={props.styleInput} handleButtonChange = {props.handleButtonChange} />
     </React.Fragment>
   )
 }
