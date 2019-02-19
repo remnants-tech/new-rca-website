@@ -1,7 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from .models import Greeting
+# from .models import Greeting
+# from .models import AttendeeDao
+# from .models import Attendee
+
+import json
 
 # Create your views here.
 def index(request):
@@ -12,11 +16,12 @@ def createAccount(request):
     return render(request, "createAccount.html")
 
 
-def db(request):
+# def db(request):
 
-    greeting = Greeting()
-    greeting.save()
+#     greeting = Greeting()
+#     greeting.save()
 
-    greetings = Greeting.objects.all()
+#     greetings = Greeting.objects.all()
 
-    return render(request, "db.html", {"greetings": greetings})
+#     return render(request, "db.html", {"greetings": greetings})
+

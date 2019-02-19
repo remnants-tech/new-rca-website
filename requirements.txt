@@ -2,3 +2,5 @@ django
 gunicorn
 django-heroku
 django-webpack-loader
+psycopg2
+djangorestframework

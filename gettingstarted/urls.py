@@ -1,4 +1,5 @@
 from django.urls import path, include
+from django.conf.urls import url
 
 from django.contrib import admin
 
@@ -18,5 +19,6 @@ urlpatterns = [
     path("", hello.views.index, name="index"),
     path("db/", hello.views.db, name="db"),
     path("admin/", admin.site.urls),
-    path("createAccount", hello.views.createAccount, name="createAccount")
+    path("createAccount", hello.views.createAccount, name="createAccount"),
+    path('api/hello/', include(('hello.api.urls', 'hello'), namespace='api-hello')),
 ]
