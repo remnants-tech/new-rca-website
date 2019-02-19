@@ -22,8 +22,8 @@ import {secondPartStateNames} from './RegistrationConstants'
 export const MainRCAOptionsSection = (props) => {
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
-        Main RCA Options
+      <Typography variant="h6" gutterBottom className={props.classes.sectionHeading}>
+        Main Options
       </Typography>
       <Grid container spacing={8}>
         <Grid item xs={12} sm={12}>
@@ -49,6 +49,9 @@ export const MainRCAOptionsSection = (props) => {
             fullWidth
             value={props[secondPartStateNames.selectShirtSize]}
             onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.selectShirtSize, false, false)}}
+            className={props.classes.textField}
+            margin="normal"
+            variant="outlined"
             >
             // TODO: include more menu items and refactor if necessary
               <MenuItem key="small" value="small">Small</MenuItem>
@@ -64,6 +67,9 @@ export const MainRCAOptionsSection = (props) => {
             fullWidth
             value={props[secondPartStateNames.selectVolunteerOption]}
             onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.selectVolunteerOption, false, false)}}
+            className={props.classes.textField}
+            margin="normal"
+            variant="outlined"
             >
               <MenuItem key="yes" value="yes">Yes, I'd like to volunteer</MenuItem>
               <MenuItem key="no" value="no">No, I don't want to volunteer</MenuItem>
@@ -73,11 +79,13 @@ export const MainRCAOptionsSection = (props) => {
           <TextField
             id={secondPartStateNames.healthCondition}
             name={secondPartStateNames.healthCondition}
-            label="Health Condition"
+            label="Health Condition- Tell us if you have special condition"
             fullWidth
-            helperText="Tell us if you have special condition"
             value={props[secondPartStateNames.healthCondition]}
             onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.healthCondition, false, false)}}
+            className={props.classes.textField}
+            margin="normal"
+            variant="outlined"
           />
         </Grid>
         <Grid item xs={12} sm={12}>
@@ -86,9 +94,11 @@ export const MainRCAOptionsSection = (props) => {
             name={secondPartStateNames.prayerTopic}
             label="Prayer Topic"
             fullWidth
-            helperText="Write your prayer topic"
             value={props[secondPartStateNames.prayerTopic]}
             onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.prayerTopic, false, false)}}
+            className={props.classes.textField}
+            margin="normal"
+            variant="outlined"
           />
         </Grid>
       </Grid>

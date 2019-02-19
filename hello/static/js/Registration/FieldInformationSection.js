@@ -17,10 +17,10 @@ import {firstPartStateNames} from './RegistrationConstants';
 export const FieldInformationSection = (props) => {
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
+      <Typography variant="h6" gutterBottom className={props.classes.sectionHeading}>
         Your field information
       </Typography>
-      <Grid container spacing={8}>
+      <Grid container spacing={8} >
         <Grid item xs={12} sm={4}>
           <TextField
             required
@@ -30,6 +30,9 @@ export const FieldInformationSection = (props) => {
             fullWidth
             value={props[firstPartStateNames.schoolName]}
             onChange={(newValue) => {props.handleFieldInputChange(newValue,firstPartStateNames.schoolName, true, false)}}
+            className={props.classes.textField}
+            margin="normal"
+            variant="outlined"
           />
         </Grid>
         <Grid item xs={12} sm={4}>
@@ -41,6 +44,9 @@ export const FieldInformationSection = (props) => {
             fullWidth
             value={props[firstPartStateNames.gradeLevel]}
             onChange={(newValue) => {props.handleFieldInputChange(newValue,firstPartStateNames.gradeLevel, true, false)}}
+            className={props.classes.textField}
+            margin="normal"
+            variant="outlined"
           />
         </Grid>
         <Grid item xs={12} sm={4}>
@@ -52,6 +58,9 @@ export const FieldInformationSection = (props) => {
             fullWidth
             value={props[firstPartStateNames.gradeLevel]}
             onChange={(newValue) => {props.handleFieldInputChange(newValue,firstPartStateNames.gradeLevel, true, false)}}
+            className={props.classes.textField}
+            margin="normal"
+            variant="outlined"
           />
         </Grid>
         <Grid item xs={12} sm={4}>
@@ -60,9 +69,11 @@ export const FieldInformationSection = (props) => {
             fullWidth
             select
             label="Select area of interest/specialty"
-            helperText="Select your area of interest or specialty"
             value={props[firstPartStateNames.selectAreaOfInterest]}
             onChange={(newValue) => {props.handleFieldInputChange(newValue,firstPartStateNames.selectAreaOfInterest, true, false)}}
+            className={props.classes.textField}
+            margin="normal"
+            variant="outlined"
             >
             <MenuItem key="accounting" value="accounting">Accounting</MenuItem>
             <MenuItem key="finance" value="finance">Finance</MenuItem>
@@ -78,6 +89,9 @@ export const FieldInformationSection = (props) => {
             autoComplete="company"
             value={props[firstPartStateNames.company]}
             onChange={(newValue) => {props.handleFieldInputChange(newValue,firstPartStateNames.company, true, false)}}
+            className={props.classes.textField}
+            margin="normal"
+            variant="outlined"
           />
         </Grid>
         <Grid item xs={12} sm={4}>
@@ -90,6 +104,9 @@ export const FieldInformationSection = (props) => {
             autoComplete="company"
             value={props[firstPartStateNames.title]}
             onChange={(newValue) => {props.handleTextValueChange(newValue,firstPartStateNames.title, true, false)}}
+            className={props.classes.textField}
+            margin="normal"
+            variant="outlined"
           />
         </Grid>
       </Grid>

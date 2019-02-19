@@ -23,7 +23,7 @@ import {secondPartStateNames} from './RegistrationConstants'
 export const BillingAddressSection = (props) => {
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
+      <Typography variant="h6" gutterBottom className={props.classes.sectionHeading}>
         Billing Address
       </Typography>
       <Grid container spacing={8}>
@@ -37,7 +37,7 @@ export const BillingAddressSection = (props) => {
                 onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.billingAddressCheckBox, false, true)}}
               />
             }
-            label="Would you like to save this card for the future?"
+            label="Billing address is same as My address"
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -48,6 +48,9 @@ export const BillingAddressSection = (props) => {
             fullWidth
             value={props[secondPartStateNames.billingAddressFirstName]}
             onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.billingAddressFirstName, false, false)}}
+            className={props.classes.textField}
+            margin="normal"
+            variant="outlined"
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -58,6 +61,9 @@ export const BillingAddressSection = (props) => {
             fullWidth
             value={props[secondPartStateNames.billingAddressLastName]}
             onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.billingAddressLastName, false, false)}}
+            className={props.classes.textField}
+            margin="normal"
+            variant="outlined"
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -68,6 +74,9 @@ export const BillingAddressSection = (props) => {
             fullWidth
             value={props[secondPartStateNames.billingAddressStreetAddress]}
             onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.billingAddressStreetAddress, false, false)}}
+            className={props.classes.textField}
+            margin="normal"
+            variant="outlined"
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -78,6 +87,9 @@ export const BillingAddressSection = (props) => {
             fullWidth
             value={props[secondPartStateNames.billingAddressStreetAddress]}
             onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.billingAddressStreetAddress, false, false)}}
+            className={props.classes.textField}
+            margin="normal"
+            variant="outlined"
           />
         </Grid>
         <Grid item xs={12} sm={4}>
@@ -88,6 +100,9 @@ export const BillingAddressSection = (props) => {
             fullWidth
             value={props[secondPartStateNames.billingAddressCity]}
             onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.billingAddressCity, false, false)}}
+            className={props.classes.textField}
+            margin="normal"
+            variant="outlined"
           />
         </Grid>
         <Grid item xs={12} sm={4}>
@@ -98,6 +113,9 @@ export const BillingAddressSection = (props) => {
             fullWidth
             value={props[secondPartStateNames.billingAddressState]}
             onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.billingAddressState, false, false)}}
+            className={props.classes.textField}
+            margin="normal"
+            variant="outlined"
           />
         </Grid>
         <Grid item xs={12} sm={4}>
@@ -108,6 +126,9 @@ export const BillingAddressSection = (props) => {
             fullWidth
             value={props[secondPartStateNames.billingAddressPostalCode]}
             onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.billingAddressPostalCode, false, false)}}
+            className={props.classes.textField}
+            margin="normal"
+            variant="outlined"
           />
         </Grid>
       </Grid>

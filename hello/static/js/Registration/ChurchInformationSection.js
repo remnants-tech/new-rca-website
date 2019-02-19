@@ -16,7 +16,7 @@ import {firstPartStateNames} from  './RegistrationConstants'
 export const ChurchInformationSection = (props) => {
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
+      <Typography variant="h6" gutterBottom className={props.classes.sectionHeading}>
         Your church information
       </Typography>
       {/* TODO: might want to store grid specs as constants for maintaining consistency */}
@@ -29,6 +29,9 @@ export const ChurchInformationSection = (props) => {
             fullWidth
             value={props[firstPartStateNames.selectChurchPosition]}
             onChange={(newValue) => {props.handleFieldInputChange(newValue,firstPartStateNames.selectChurchPosition, true, false)}}
+            className={props.classes.textField}
+            margin="normal"
+            variant="outlined"
             >
             {/* TODO: insert more menu items and refactor if neccessary */}
             <MenuItem key="remnant" value="remnant">Remnant</MenuItem>
@@ -37,12 +40,15 @@ export const ChurchInformationSection = (props) => {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-          id={firstPartStateNames.selectTrainingLevel}
+            id={firstPartStateNames.selectTrainingLevel}
             fullWidth
             select
             label="Select your training level"
             value={props[firstPartStateNames.selectTrainingLevel]}
             onChange={(newValue) => {props.handleFieldInputChange(newValue,firstPartStateNames.selectTrainingLevel, true, false)}}
+            className={props.classes.textField}
+            margin="normal"
+            variant="outlined"
             >
             {/* TODO: insert more menu items and refactor if neccessary */}
             <MenuItem key="first-level-camp" value="first-level-camp">First Level Camp Training</MenuItem>
@@ -54,9 +60,11 @@ export const ChurchInformationSection = (props) => {
             fullWidth
             select
             label="Select your church name"
-            helperText="Type in your church name below if you do not see your church in the dropdown"
             value={props[firstPartStateNames.selectChurchName]}
             onChange={(newValue) => {props.handleFieldInputChange(newValue,firstPartStateNames.selectChurchName, true, false)}}
+            className={props.classes.textField}
+            margin="normal"
+            variant="outlined"
             >
             {/* TODO: insert more church names and refactor if neccessary */}
             <MenuItem key="one-mind-church" value="one-mind-church">One Mind Church</MenuItem>
@@ -72,6 +80,9 @@ export const ChurchInformationSection = (props) => {
             fullWidth
             value={props[firstPartStateNames.typeInChurchName]}
             onChange={(newValue) => {props.handleFieldInputChange(newValue,firstPartStateNames.typeInChurchName, true, false)}}
+            className={props.classes.textField}
+            margin="normal"
+            variant="outlined"
           />
         </Grid>
       </Grid>

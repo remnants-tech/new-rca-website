@@ -5,15 +5,26 @@ import {FieldInformationSection} from './FieldInformationSection';
 import {BasicInformationSection} from './BasicInformationSection';
 import {ChurchInformationSection} from './ChurchInformationSection';
 import Icon from '@material-ui/core/Icon';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 
 const NextButton = (props) => {
   return (
-    <Button variant="contained" color="primary" className= {props.styleInput} onClick={props.handleButtonChange}>
-      Next
-      <ArrowForwardIosIcon />
-    </Button>
+    <Grid container spacing={8}>
+      <Grid item xs={12} sm={6}/>
+      <Grid item xs={12} sm={6}>
+        <Button
+          variant="contained"
+          onClick={props.handleButtonChange}
+          fullWidth
+          className={props.classes.nextButton}
+          >
+          Next
+          <ArrowForwardIcon />
+        </Button>
+      </Grid>
+    </Grid>
   )
 }
 
@@ -23,7 +34,7 @@ export const RegistrationFirstPart = (props) => {
       <FieldInformationSection {...props} />
       <BasicInformationSection {...props}/>
       <ChurchInformationSection {...props}/>
-      <NextButton styleInput={props.styleInput} handleButtonChange={props.handleButtonChange} />
+      <NextButton handleButtonChange={props.handleButtonChange} classes={props.classes} />
     </React.Fragment>
   )
 }

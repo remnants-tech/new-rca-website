@@ -17,6 +17,8 @@ import {RegistrationSecondPart} from './Registration/RegistrationSecondPartCompo
 import {RegistrationFirstPart} from './Registration/RegistrationFirstPartComponent';
 import {firstPartStates} from './Registration/RegistrationConstants';
 import {secondPartStates} from './Registration/RegistrationConstants';
+import {RegistrationDrawer} from './Registration/RegistrationDrawer';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 const FIRST_PART_STATE = "firstPartStates";
 const SECOND_PART_STATE = "secondPartStates";
@@ -45,21 +47,27 @@ class RegistrationCardComponent extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <React.Fragment>
-        <Paper className= {classes.paper}>
-          <Typography component="h1" variant="h4" allign="center">
-            Register for Remnant Conference of America
-          </Typography>
-          {this.state.isFirstPage ?
-            <RegistrationFirstPart {...this.state[FIRST_PART_STATE]}
-              handleFieldInputChange= {this.handleFieldInputChange.bind(this)}
-              handleButtonChange= {this.handleRegistrationPageChange.bind(this)} /> :
-            <RegistrationSecondPart {...this.state[SECOND_PART_STATE]}
-              handleFieldInputChange= {this.handleFieldInputChange.bind(this)}
-              handleButtonChange= {this.handleRegistrationPageChange.bind(this)} />
-          }
-        </Paper>
-      </React.Fragment>
+      <div className={classes.root}>
+        <CssBaseline />
+        <React.Fragment >
+          <RegistrationDrawer isFirstPage={this.state.isFirstPage} classes= {classes} />
+          <div className={classes.toolbar} />
+          <Paper className= {classes.paper}>
+            <Typography component="h1" variant="h4" allign="center">Register for</Typography>
+            <Typography component="h1" variant="h4" allign="center">College & Young Adults Conference</Typography>
+              {this.state.isFirstPage ?
+                <RegistrationFirstPart {...this.state[FIRST_PART_STATE]}
+                  handleFieldInputChange= {this.handleFieldInputChange.bind(this)}
+                  handleButtonChange= {this.handleRegistrationPageChange.bind(this)}
+                  classes= {classes} /> :
+                <RegistrationSecondPart {...this.state[SECOND_PART_STATE]}
+                  handleFieldInputChange= {this.handleFieldInputChange.bind(this)}
+                  handleButtonChange= {this.handleRegistrationPageChange.bind(this)}
+                  classes= {classes} />
+              }
+          </Paper>
+        </React.Fragment>
+      </div>
     )
   }
 }

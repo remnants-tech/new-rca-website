@@ -1,19 +1,45 @@
-import React from 'react'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
+/**
+  Navigation bar component of the Website
 
-const NavBar = () => {
-    return(
-        <div>
-        <AppBar position="static">
-            <Toolbar>
-                <Typography variant="title" color="inherit">
-                New RCA Website
-                </Typography>
-            </Toolbar>
+  @author: Jae Won Kwon <jaewonrt@gmail.com>
+  date:2/16/19
+*/
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Typography from '@material-ui/core/Typography';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import {navBarStyles} from './styleConstants';
+
+
+class NavBar extends React.Component {
+  state = {
+    value: 0,
+  };
+
+  handleChange = (event, value) => {
+    this.setState({ value });
+  };
+
+  render() {
+    const { classes } = this.props;
+    const { value } = this.state;
+    return (
+      <React.Fragment>
+        <AppBar position="sticky" className={classes.appBar}>
+          <Tabs value={value} onChange={this.handleChange}>
+            <Tab label="About us" classes={{label: classes.label}}/>
+            <Tab label="Registration" classes={{label: classes.label}}/>
+            <Tab label="Account" classes={{label: classes.label}}/>
+          </Tabs>
         </AppBar>
-        </div>
-    )
+      </React.Fragment>
+    );
+  }
 }
-export default NavBar;
+
+
+export default withStyles(navBarStyles)(NavBar);

@@ -22,7 +22,7 @@ import {secondPartStateNames} from './RegistrationConstants'
 export const PaymentSection = (props) => {
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
+      <Typography variant="h6" gutterBottom className={props.classes.sectionHeading}>
         Payment
       </Typography>
       <Grid container spacing={8}>
@@ -58,9 +58,11 @@ export const PaymentSection = (props) => {
             name={secondPartStateNames.cardNumber}
             label="Card number"
             fullWidth
-            autoComplete="cardNumber"
             value={props[secondPartStateNames.cardNumber]}
             onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.cardNumber, false, false)}}
+            className={props.classes.textField}
+            margin="normal"
+            variant="outlined"
           />
         </Grid>
         <Grid item xs={12} sm={3}>
@@ -69,9 +71,11 @@ export const PaymentSection = (props) => {
             name={secondPartStateNames.expirationDate}
             label="Expiration Date"
             fullWidth
-            autoComplete="expirationDate"
             value={props[secondPartStateNames.expirationDate]}
             onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.expirationDate, false, false)}}
+            className={props.classes.textField}
+            margin="normal"
+            variant="outlined"
           />
         </Grid>
         <Grid item xs={12} sm={2}>
@@ -80,9 +84,11 @@ export const PaymentSection = (props) => {
             name={secondPartStateNames.securityCode}
             label="Security Code"
             fullWidth
-            autoComplete="securityCode"
             value={props[secondPartStateNames.securityCode]}
             onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.securityCode, false, false)}}
+            className={props.classes.textField}
+            margin="normal"
+            variant="outlined"
           />
         </Grid>
         <Grid item xs={12} sm={12}>

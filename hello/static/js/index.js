@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import NavBar from './navbarComponent'
 import RegistrationCardComponent from './RegistrationCardComponent'
+import Paper from '@material-ui/core/Paper';
 
 
 class App extends React.Component {
@@ -9,10 +10,10 @@ class App extends React.Component {
     return (
       <div>
         <React.Fragment>
-          <NavBar />
-        </React.Fragment>
-        <React.Fragment>
-          <RegistrationCardComponent />
+          <Paper>
+            <NavBar />
+            <RegistrationCardComponent />
+          </Paper>
         </React.Fragment>
       </div>
     )
