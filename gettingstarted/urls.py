@@ -17,7 +17,7 @@ import hello.views
 
 urlpatterns = [
     path("", hello.views.index, name="index"),
-    path("db/", hello.views.db, name="db"),
+    # path("db/", hello.views.db, name="db"),
     path("admin/", admin.site.urls),
     path("createAccount", hello.views.createAccount, name="createAccount"),
     path('api/hello/', include(('hello.api.urls', 'hello'), namespace='api-hello')),

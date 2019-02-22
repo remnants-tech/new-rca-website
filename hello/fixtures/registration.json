@@ -1,0 +1,19 @@
+[
+{
+    "model": "hello.registration",
+    "pk": 1,
+    "fields": {
+        "attendee_id": 1,
+        "event_id": 1,
+        "ticket_id": 1,
+        "paid": false,
+        "staff": false,
+        "team_id": null,
+        "room": "",
+        "shirt_size": "M",
+        "health": "",
+        "prayer_topic": "",
+        "registration_created": "2019-02-21T23:20:13.835Z"
+    }
+}
+]

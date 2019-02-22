@@ -22,8 +22,41 @@ class AttendeeCreateView(mixins.CreateModelMixin, generics.ListAPIView):
 	# def get_queryset(self):
 	# 	return Attendee.objects.all()
 
+	# def get_serializer_context(self):
+	# 	context = super(AttendeeCreateView, self).get_serializer_context()
+	# 	context["data"] = request.data.get("email")
+	# 	return context
+
 	def perform_create(self, serializer):
-		serializer.save(user=self.request.user)
+		# return serializer
+		serializer.save()
+		event_id = self.request.data.get("event_id")
+		ticket_id = self.request.data.get("ticket_id")
+		# The event and ticket id should be passed from the post
+		attendee = Attendee.objects.get(email=self.request.data.get("email"))
+		event = Event.objects.get(pk=event_id)
+		ticket =  Ticket.objects.get(pk=ticket_id)
+		# print(attendee)
+		# print(attendee.pk)
+		# print(attendee[0].pk)
+		# request = self.context.get('request')
+
+		obj, created = Registration.objects.update_or_create(
+			attendee_id=attendee.pk,
+			defaults={
+				'attendee_id': Attendee.objects.get(email=self.request.data.get("email")),
+				'event_id': event,
+				'ticket_id': ticket,
+				'paid': self.request.data.get("paid"),
+				'staff': self.request.data.get("staff"),
+				'team_id': self.request.data.get("team_id"),
+				'room': self.request.data.get("room"),
+				'shirt_size': self.request.data.get("shirt_size"),
+				'health': self.request.data.get("health"),
+				'prayer_topic': self.request.data.get("prayer_topic")
+			}
+		)
+
 
 	def post(self, request, *args, **kwargs):
 		return self.create(request, *args, **kwargs)

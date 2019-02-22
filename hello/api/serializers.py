@@ -35,12 +35,12 @@ class AttendeeSerializer(serializers.ModelSerializer):
 			'attendee_created',
 		]
 
-		def validate_title(self, value):
-			qs = Attendee.objects.filter(title__iexact=value)
-			if self.instance:
-				qs = qs.exclude(pk=self.instance.pk)
-			if qs.exists():
-				raise serializers.ValidationError("The email had already been used")
+		# def validate_(self, value):
+		# 	qs = Attendee.objects.filter(title__iexact=value)
+		# 	if self.instance:
+		# 		qs = qs.exclude(pk=self.instance.pk)
+		# 	if qs.exists():
+		# 		raise serializers.ValidationError("The email had already been used")
 
 class EventSerializer(serializers.ModelSerializer):
 	class Meta:
@@ -91,6 +91,8 @@ class RegistrationSerializer(serializers.ModelSerializer):
 			'prayer_topic',
 			'registration_created',
 		]
+
+		
 
 class TransactionSerializer(serializers.ModelSerializer):
 	class Meta:

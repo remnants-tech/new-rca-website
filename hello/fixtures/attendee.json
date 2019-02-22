@@ -1,0 +1,34 @@
+[
+{
+    "model": "hello.attendee",
+    "pk": 1,
+    "fields": {
+        "email": "msjsam@gmail.com",
+        "password": "abc",
+        "first_name": "Sam",
+        "last_name": "Myoung",
+        "korean_name": "",
+        "dob": "1960-06-13",
+        "gender": "Male",
+        "language": "en",
+        "phone_number": "427-115-1050",
+        "interest": "Pharmacy",
+        "church": "Christ Covenant Church of California",
+        "church_position": "Remnant",
+        "training": "1st Level Camp Training",
+        "leader": false,
+        "staff": false,
+        "school": "Princeton University",
+        "grade": "13",
+        "major": "Chemical Engineering",
+        "company": "",
+        "company_position": "",
+        "shirt_size": "S",
+        "address": "1 Ohio Court",
+        "city": "Libertyville",
+        "state": "IL",
+        "zip_code": 60048,
+        "attendee_created": "2019-02-21T23:19:15.330Z"
+    }
+}
+]

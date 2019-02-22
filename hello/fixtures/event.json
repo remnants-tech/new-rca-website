@@ -1,0 +1,19 @@
+[
+{
+    "model": "hello.event",
+    "pk": 1,
+    "fields": {
+        "name": "2019 College Retreat",
+        "address": "2804 Beverly Blvd",
+        "city": "Los Angeles",
+        "zip_code": 90057,
+        "language": "en",
+        "event_description": "USA College Retreat",
+        "event_start": "2019-05-23",
+        "event_end": "2019-05-25",
+        "event_start_time": "15:00:00",
+        "event_end_time": "12:00:00",
+        "event_created": "2019-02-21T23:15:32.268Z"
+    }
+}
+]

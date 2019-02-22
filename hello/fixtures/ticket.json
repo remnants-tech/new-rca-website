@@ -1,0 +1,28 @@
+[
+{
+    "model": "hello.ticket",
+    "pk": 1,
+    "fields": {
+        "event_id": 1,
+        "ticket_name": "Early Bird - 4 People / Room",
+        "ticket_description": "2019 College Retreat - Early Bird Registration Period",
+        "ticket_price": 200,
+        "ticket_start": "2019-03-15",
+        "ticket_end": "2019-03-31",
+        "ticket_created": "2019-02-21T23:16:08.233Z"
+    }
+},
+{
+    "model": "hello.ticket",
+    "pk": 2,
+    "fields": {
+        "event_id": 1,
+        "ticket_name": "Early Bird - 2 People / Room",
+        "ticket_description": "2019 College Retreat - Early Bird Registration Period",
+        "ticket_price": 300,
+        "ticket_start": "2019-03-15",
+        "ticket_end": "2019-03-31",
+        "ticket_created": "2019-02-21T23:16:30.067Z"
+    }
+}
+]
