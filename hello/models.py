@@ -15,7 +15,7 @@ from django.contrib.auth.models import (
 )
 
 class UserManager(BaseUserManager):
-
+	# take into consideration first name and last name
 	def create_user(self, email, first_name, last_name, password=None, is_active=True, is_staff=False, is_admin=False):
 		if not email:
 			raise ValueError("Users must have an email address")
@@ -25,7 +25,6 @@ class UserManager(BaseUserManager):
 			raise ValueError("Users must enter a first name")
 		if not last_name:
 			raise ValueError("Users must enter a last name")
-
 		user_obj = self.model(
 			email = self.normalize_email(email),
 			first_name = first_name,
@@ -35,17 +34,16 @@ class UserManager(BaseUserManager):
 		user_obj.staff = is_staff
 		user_obj.admin = is_admin
 		user_obj.active = is_active
-		user_obj.save(using=self.__db)
-
+		user_obj.save(using=self._db)
 		return user_obj
 
 	def create_staffuser(self, email, first_name, last_name, password=None):
 		user = self.create_user(
-			email,
-			first_name,
-			last_name,
-			password=password,
-			is_staff=True
+				email,
+				first_name,
+				last_name,
+				password=password,
+				is_staff=True
 		)
 		return user
 
@@ -56,7 +54,7 @@ class UserManager(BaseUserManager):
 			last_name,
 			password=password,
 			is_staff=True,
-			is_admin=True
+			is_admin=True,
 		)
 		return user
 
@@ -72,10 +70,10 @@ class User(AbstractBaseUser):
 	changed			= models.DateTimeField(auto_now=True)
 	created 		= models.DateTimeField(auto_now_add=True)
 
-	USERNAME_FIELD 	= 'email'
-	REQUIRED_FIELDS	= ['first_name', 'last_name']
+	USERNAME_FIELD = 'email'
+	REQUIRED_FIELDS = ['first_name', 'last_name'] # Will affect python manage.py createsuperuser
 
-	objects 		= UserManager()
+	objects = UserManager()
 
 	def __str__(self):
 		return self.email
@@ -99,7 +97,7 @@ class User(AbstractBaseUser):
 	@property
 	def is_admin(self):
 		return self.admin
-	
+
 	@property
 	def is_active(self):
 		return self.active

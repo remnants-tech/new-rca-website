@@ -55,7 +55,7 @@ REST_FRAMEWORK = {
     ),
 }
 
-AUTH_USER_MODEL = 'hello.User' #changes the built-in user model to ours
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -146,3 +146,5 @@ STATICFILES_DIR = [
 ]
 
 django_heroku.settings(locals())
+
+AUTH_USER_MODEL = 'hello.User' #changes the built-in user model to ours
