@@ -1,79 +1,143 @@
 from django.db.models import Q
 from rest_framework import generics, mixins
+from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 
-from hello.models import Attendee, Registration, Event, Ticket, Transaction, Reference, Logging
-from .serializers import AttendeeSerializer, EventSerializer, RegistrationSerializer, TicketSerializer, TransactionSerializer, LoggingSerializer, ReferenceSerializer
+from hello.models import Profile, Registration, Event, Ticket, Transaction, Reference, Logging
+from .serializers import UserSerializer, ProfileSerializer, EventSerializer, RegistrationSerializer, TicketSerializer, TransactionSerializer, LoggingSerializer, ReferenceSerializer
 
-class AttendeeCreateView(mixins.CreateModelMixin, generics.ListAPIView):
+User = get_user_model()
+
+class UserCreateView(mixins.CreateModelMixin, generics.ListAPIView):
 
 	lookup_field = 'pk'
-	serializer_class = AttendeeSerializer
-	
-	def get_queryset(self):
-		qs = Attendee.objects.all()
-		query = self.request.GET.get("q")
-		if query is not None:
-			qs = qs.filter(
-				Q(email__icontains=query)|
-				Q(first_name__icontains=query)|
-				Q(last_name__icontains=query)
-				).distinct()
-		return qs
+	serializer_class = 'UserSerializer'
+	user = User.objects
+	queryset = User.objects.all()
 	# def get_queryset(self):
-	# 	return Attendee.objects.all()
-
-	# def get_serializer_context(self):
-	# 	context = super(AttendeeCreateView, self).get_serializer_context()
-	# 	context["data"] = request.data.get("email")
-	# 	return context
+	# 	qs = Profile.objects.all()
+	# 	# query = self.request.GET.get("q")
+	# 	# if query is not None:
+	# 	# 	qs = qs.filter(
+	# 	# 		Q(first_name__icontains=query)|
+	# 	# 		Q(last_name__icontains=query)|
+	# 	# 		Q(email__icontains=query)
+	# 	# 		).distinct()
+	# 	return qs
 
 	def perform_create(self, serializer):
-		# return serializer
-		serializer.save()
-		event_id = self.request.data.get("event_id")
-		ticket_id = self.request.data.get("ticket_id")
-		# The event and ticket id should be passed from the post
-		attendee = Attendee.objects.get(email=self.request.data.get("email"))
-		event = Event.objects.get(pk=event_id)
-		ticket =  Ticket.objects.get(pk=ticket_id)
-		# print(attendee)
-		# print(attendee.pk)
-		# print(attendee[0].pk)
-		# request = self.context.get('request')
-
-		obj, created = Registration.objects.update_or_create(
-			attendee_id=attendee.pk,
-			defaults={
-				'attendee_id': Attendee.objects.get(email=self.request.data.get("email")),
-				'event_id': event,
-				'ticket_id': ticket,
-				'paid': self.request.data.get("paid"),
-				'staff': self.request.data.get("staff"),
-				'team_id': self.request.data.get("team_id"),
-				'room': self.request.data.get("room"),
-				'shirt_size': self.request.data.get("shirt_size"),
-				'health': self.request.data.get("health"),
-				'prayer_topic': self.request.data.get("prayer_topic")
-			}
-		)
-
+		serializer.save(user=self.request.user)
 
 	def post(self, request, *args, **kwargs):
 		return self.create(request, *args, **kwargs)
 
-	# def put(self, request, *args, **kwargs):
-	# 	return self.update(request, *args, **kwargs)
-
-	# def patch(self, request, *args, **kwargs):
-	# 	return self.update(request, *args, **kwargs)
-
-class AttendeeRudView(generics.RetrieveUpdateDestroyAPIView):
+class UserRudView(generics.RetrieveUpdateDestroyAPIView):
 
 	lookup_field = 'pk'
-	serializer_class = AttendeeSerializer
+	serializer_class = UserSerializer
 	
 	def get_queryset(self):
-		return Attendee.objects.all()
+		return User.objects.all()
+
+class ProfileCreateView(mixins.CreateModelMixin, generics.ListAPIView):
+
+	lookup_field = 'pk'
+	serializer_class = 'ProfileSerializer'
+	queryset = Profile.objects.all()
+
+	# def get_queryset(self):
+	# 	qs = Profile.objects.all()
+	# 	# query = self.request.GET.get("q")
+	# 	# if query is not None:
+	# 	# 	qs = qs.filter(
+	# 	# 		Q(user__icontains=query)).distinct()
+	# 	return qs
+
+	def perform_create(self, serializer):
+		serializer.save()
+		# serializer.save(user=self.request.user)
+
+	def post(self, request, *args, **kwargs):
+		return self.create(request, *args, **kwargs)
+
+class ProfileRudView(generics.RetrieveUpdateDestroyAPIView):
+
+	lookup_field = 'pk'
+	serializer_class = ProfileSerializer
+	
+	def get_queryset(self):
+		return Profile.objects.all()
+
+# class AttendeeCreateView(mixins.CreateModelMixin, generics.ListAPIView):
+
+# 	lookup_field = 'pk'
+# 	serializer_class = AttendeeSerializer
+	
+# 	def get_queryset(self):
+# 		qs = Attendee.objects.all()
+# 		query = self.request.GET.get("q")
+# 		if query is not None:
+# 			qs = qs.filter(
+# 				Q(email__icontains=query)|
+# 				Q(first_name__icontains=query)|
+# 				Q(last_name__icontains=query)
+# 				).distinct()
+# 		return qs
+# 	# def get_queryset(self):
+# 	# 	return Attendee.objects.all()
+
+# 	# def get_serializer_context(self):
+# 	# 	context = super(AttendeeCreateView, self).get_serializer_context()
+# 	# 	context["data"] = request.data.get("email")
+# 	# 	return context
+
+# 	def perform_create(self, serializer):
+# 		# return serializer
+# 		serializer.save()
+# 		event_id = self.request.data.get("event_id")
+# 		ticket_id = self.request.data.get("ticket_id")
+# 		# The event and ticket id should be passed from the post
+# 		attendee = Attendee.objects.get(email=self.request.data.get("email"))
+# 		event = Event.objects.get(pk=event_id)
+# 		ticket =  Ticket.objects.get(pk=ticket_id)
+# 		# print(attendee)
+# 		# print(attendee.pk)
+# 		# print(attendee[0].pk)
+# 		# request = self.context.get('request')
+
+# 		obj, created = Registration.objects.update_or_create(
+# 			attendee_id=attendee.pk,
+# 			defaults={
+# 				'attendee_id': Attendee.objects.get(email=self.request.data.get("email")),
+# 				'event_id': event,
+# 				'ticket_id': ticket,
+# 				'paid': self.request.data.get("paid"),
+# 				'staff': self.request.data.get("staff"),
+# 				'team_id': self.request.data.get("team_id"),
+# 				'room': self.request.data.get("room"),
+# 				'shirt_size': self.request.data.get("shirt_size"),
+# 				'health': self.request.data.get("health"),
+# 				'prayer_topic': self.request.data.get("prayer_topic")
+# 			}
+# 		)
+
+
+# 	def post(self, request, *args, **kwargs):
+# 		return self.create(request, *args, **kwargs)
+
+# 	# def put(self, request, *args, **kwargs):
+# 	# 	return self.update(request, *args, **kwargs)
+
+# 	# def patch(self, request, *args, **kwargs):
+# 	# 	return self.update(request, *args, **kwargs)
+
+# class AttendeeRudView(generics.RetrieveUpdateDestroyAPIView):
+
+# 	lookup_field = 'pk'
+# 	serializer_class = AttendeeSerializer
+	
+# 	def get_queryset(self):
+# 		return Attendee.objects.all()
 
 class EventCreateView(mixins.CreateModelMixin, generics.ListAPIView):
 

@@ -1,12 +1,14 @@
 from django.urls import path, include
 
 from django.conf.urls import url
-from .views import AttendeeRudView, RegistrationRudView, EventRudView, TicketRudView, ReferenceRudView, TransactionRudView, LoggingRudView
-from .views import AttendeeCreateView, EventCreateView, TicketCreateView, RegistrationCreateView, TransactionCreateView, ReferenceCreateView, LoggingCreateView
+from .views import UserRudView, ProfileRudView, RegistrationRudView, EventRudView, TicketRudView, ReferenceRudView, TransactionRudView, LoggingRudView
+from .views import UserCreateView, ProfileCreateView, EventCreateView, TicketCreateView, RegistrationCreateView, TransactionCreateView, ReferenceCreateView, LoggingCreateView
 
 urlpatterns = [
-	path('attendee/', AttendeeCreateView.as_view(), name="attendee-create"),
-	path('attendee/<int:pk>/', AttendeeRudView.as_view(), name="attendee-crud"),
+	path('user/', include('rest_auth.urls')),
+	# path('user/registration/', include('rest_auth.registration.urls')),
+	path('profile/', ProfileCreateView.as_view(), name="profile-create"),
+	path('profile/<int:pk>/', ProfileRudView.as_view(), name="profile-crud"),
 	path('event/', EventCreateView.as_view(), name="event-create"),
 	path('event/<int:pk>/', EventRudView.as_view(), name="event-crud"),
 	path('ticket/', TicketCreateView.as_view(), name="ticket-create"),

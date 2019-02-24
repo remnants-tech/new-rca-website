@@ -1,16 +1,44 @@
-from rest_framework import serializers
+# from django.contrib.auth import get_user_model, authenticate
+# from django.conf import settings
+# from django.contrib.auth.forms import PasswordResetForm, SetPasswordForm
+# from django.contrib.auth.tokens import default_token_generator
+# from django.utils.http import urlsafe_base64_decode as uid_decoder
+# from django.utils.translation import ugettext_lazy as _
+# from django.utils.encoding import force_text
 
-from hello.models import Attendee, Event, Ticket, Registration, Transaction, Reference, Logging
+from rest_framework import serializers, exceptions
+# from rest_framework.exceptions import ValidationError
+from django.contrib.auth.models import User
+from hello.models import Event, Ticket, Registration, Transaction, Reference, Logging, Profile
 
-class AttendeeSerializer(serializers.ModelSerializer):
+
+
+class UserSerializer(serializers.ModelSerializer):
 	class Meta:
-		model = Attendee
+		model = User
 		fields = [
 			'pk',
 			'email',
-			'password',
 			'first_name',
 			'last_name',
+			'active',
+			'staff',
+			'admin',
+			'confirm',
+			'confirmed_date',
+			'changed',
+			'created',
+		]
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+	user = UserSerializer(required=True)
+
+	class Meta:
+		model = Profile
+		fields = [
+			'pk',
+			'user',
 			'korean_name',
 			'dob',
 			'gender',
@@ -32,8 +60,41 @@ class AttendeeSerializer(serializers.ModelSerializer):
 			'city',
 			'state',
 			'zip_code',
-			'attendee_created',
+			'last_updated',
 		]
+
+# class AttendeeSerializer(serializers.ModelSerializer):
+# 	class Meta:
+# 		model = Attendee
+# 		fields = [
+# 			'pk',
+# 			'email',
+# 			'password',
+# 			'first_name',
+# 			'last_name',
+# 			'korean_name',
+# 			'dob',
+# 			'gender',
+# 			'language',
+# 			'phone_number',
+# 			'interest',
+# 			'church',
+# 			'church_position',
+# 			'training',
+# 			'leader',
+# 			'staff',
+# 			'school',
+# 			'grade',
+# 			'major',
+# 			'company',
+# 			'company_position',
+# 			'shirt_size',
+# 			'address',
+# 			'city',
+# 			'state',
+# 			'zip_code',
+# 			'attendee_created',
+# 		]
 
 		# def validate_(self, value):
 		# 	qs = Attendee.objects.filter(title__iexact=value)

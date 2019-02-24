@@ -4,3 +4,4 @@ django-heroku
 django-webpack-loader
 psycopg2
 djangorestframework
+django-rest-auth
