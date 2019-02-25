@@ -5,3 +5,4 @@ django-webpack-loader
 psycopg2
 djangorestframework
 django-rest-auth
+django-allauth

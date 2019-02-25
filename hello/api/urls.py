@@ -6,7 +6,7 @@ from .views import UserCreateView, ProfileCreateView, EventCreateView, TicketCre
 
 urlpatterns = [
 	path('user/', include('rest_auth.urls')),
-	# path('user/registration/', include('rest_auth.registration.urls')),
+	path('user/registration/', include('rest_auth.registration.urls')),
 	path('profile/', ProfileCreateView.as_view(), name="profile-create"),
 	path('profile/<int:pk>/', ProfileRudView.as_view(), name="profile-crud"),
 	path('event/', EventCreateView.as_view(), name="event-create"),

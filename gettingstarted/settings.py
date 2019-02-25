@@ -45,9 +45,9 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "rest_auth",
-    # "allauth",
-    # "allauth.account",
-    # "rest_auth.registration",
+    "allauth",
+    "allauth.account",
+    "rest_auth.registration",
 ]
 
 REST_FRAMEWORK = {
@@ -154,3 +154,5 @@ STATICFILES_DIR = [
 django_heroku.settings(locals())
 
 AUTH_USER_MODEL = 'hello.User' #changes the built-in user model to ours
+
+SITE_ID = 1
