@@ -1,0 +1,31 @@
+[
+{
+    "model": "hello.profile",
+    "pk": 1,
+    "fields": {
+        "user": 1,
+        "korean_name": "\ud64d\uc9c0\ud6c8",
+        "dob": "2019-02-26",
+        "gender": "Male",
+        "language": "English",
+        "phone_number": "18001111111",
+        "interest": "Pharmacy",
+        "church": "Christ Covenant Church of California",
+        "church_position": "Deacon",
+        "training": "Team Camp Ministry (\uc21c\ud68c \ud300\ud569\uc219)",
+        "leader": false,
+        "staff": false,
+        "school": "",
+        "grade": "",
+        "major": "",
+        "company": "Rock24 Digital LLC",
+        "company_position": "Owner",
+        "shirt_size": "M",
+        "address": "1 Ohio Court",
+        "city": "Libertyville",
+        "state": "IL",
+        "zip_code": 60048,
+        "last_updated": "2019-02-26T02:02:53.244Z"
+    }
+}
+]

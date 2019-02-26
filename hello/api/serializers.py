@@ -7,10 +7,22 @@
 # from django.utils.encoding import force_text
 
 from rest_framework import serializers, exceptions
-# from rest_framework.exceptions import ValidationError
+from rest_framework.exceptions import ValidationError
+
+from rest_auth.serializers import UserDetailsSerializer
+from rest_auth.registration.serializers import RegisterSerializer
+
 from django.contrib.auth.models import User
 from hello.models import Event, Ticket, Registration, Transaction, Reference, Logging, Profile
 
+from allauth.account import app_settings as allauth_settings
+from allauth.utils import (email_address_exists,
+							get_username_max_length)
+from allauth.account.adapter import get_adapter
+from allauth.account.utils import setup_user_email
+from allauth.socialaccount.helpers import complete_social_login
+from allauth.socialaccount.models import SocialAccount
+from allauth.socialaccount.providers.base import AuthProcess
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -30,9 +42,32 @@ class UserSerializer(serializers.ModelSerializer):
 			'created',
 		]
 
+class CustomProfileSerializer(serializers.ModelSerializer):
+
+
+	user = UserSerializer(required=True)
+
+	class Meta:
+		model = Profile
+		fields = [
+			'user',
+			'korean_name',
+			'dob',
+			'gender',
+			'language',
+			'phone_number',
+			'interest',
+			'church'
+			]
+
+	def create(self, validated_data):
+		user_data = validated_data.pop('user')
+		user = User.objects.create(**user_data)
+		profile, created = Profile.objects.update_or_create(user=user, **validated_data)
+		return profile
 
 class ProfileSerializer(serializers.ModelSerializer):
-	user = UserSerializer(required=True)
+	# user = UserSerializer(required=True)
 
 	class Meta:
 		model = Profile
@@ -62,46 +97,14 @@ class ProfileSerializer(serializers.ModelSerializer):
 			'zip_code',
 			'last_updated',
 		]
-
-# class AttendeeSerializer(serializers.ModelSerializer):
-# 	class Meta:
-# 		model = Attendee
-# 		fields = [
-# 			'pk',
-# 			'email',
-# 			'password',
-# 			'first_name',
-# 			'last_name',
-# 			'korean_name',
-# 			'dob',
-# 			'gender',
-# 			'language',
-# 			'phone_number',
-# 			'interest',
-# 			'church',
-# 			'church_position',
-# 			'training',
-# 			'leader',
-# 			'staff',
-# 			'school',
-# 			'grade',
-# 			'major',
-# 			'company',
-# 			'company_position',
-# 			'shirt_size',
-# 			'address',
-# 			'city',
-# 			'state',
-# 			'zip_code',
-# 			'attendee_created',
-# 		]
-
-		# def validate_(self, value):
-		# 	qs = Attendee.objects.filter(title__iexact=value)
-		# 	if self.instance:
-		# 		qs = qs.exclude(pk=self.instance.pk)
-		# 	if qs.exists():
-		# 		raise serializers.ValidationError("The email had already been used")
+		extra_kwargs = {
+            'user': {
+                'default': serializers.CreateOnlyDefault(
+                    serializers.CurrentUserDefault()
+                ),
+                # perhaps add 'read_only': True here too.
+            }
+        }
 
 class EventSerializer(serializers.ModelSerializer):
 	class Meta:
