@@ -5,6 +5,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 import hello.views
+from django.contrib.staticfiles.templatetags.staticfiles import static
 
 # To add a new path, first import the app:
 # import blog
@@ -20,3 +21,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("createAccount", hello.views.createAccount, name="createAccount")
 ]
+
+url= static("79d0bc4a49c56e06be9d60f2bd7aba95.jpg")

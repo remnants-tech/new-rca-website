@@ -41,8 +41,8 @@ export const BasicInformationSection = (props) => {
             name={firstPartStateNames.lastName}
             label="Last name"
             fullWidth
-            value={props[firstPartStateNames.firstName]}
-            onChange={(newValue) => {props.handleFieldInputChange(newValue,firstPartStateNames.firstName, true, false)}}
+            value={props[firstPartStateNames.lastName]}
+            onChange={(newValue) => {props.handleFieldInputChange(newValue,firstPartStateNames.lastName, true, false)}}
             className={props.classes.textField}
             variant="outlined"
             margin="normal"

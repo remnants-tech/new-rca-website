@@ -1,20 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import NavBar from './navbarComponent'
-import RegistrationCardComponent from './RegistrationCardComponent'
-import Paper from '@material-ui/core/Paper';
+import MainPageContainer from './MainPageContainer';
 
+const REGISTRATION_PAGE = "Registration";
+const LOGIN_PAGE = "login";
 
 class App extends React.Component {
   render () {
+    const { classes } = this.props;
     return (
       <div>
-        <React.Fragment>
-          <Paper>
-            <NavBar />
-            <RegistrationCardComponent />
-          </Paper>
-        </React.Fragment>
+        <MainPageContainer />
       </div>
     )
   }

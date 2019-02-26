@@ -6,6 +6,9 @@
 */
 
 export const createAccountStateNames = {
+  email: "email",
+  password: "password",
+  confirmPassword: "confirmPassword",
   firstName:"firstName",
   lastName:"lastName",
   koreanName:"koreanName",
@@ -19,6 +22,9 @@ export const createAccountStateNames = {
 };
 
 export const createAccountStates = {
+  [createAccountStateNames.email]: "",
+  [createAccountStateNames.password]: "",
+  [createAccountStateNames.confirmPassword] : "",
   [createAccountStateNames.firstName]: "",
   [createAccountStateNames.lastName] :"",
   [createAccountStateNames.koreanName] : "",

@@ -52,12 +52,12 @@ export const FieldInformationSection = (props) => {
         <Grid item xs={12} sm={4}>
           <TextField
             optional
-            id={firstPartStateNames.gradeLevel}
-            name={firstPartStateNames.gradeLevel}
+            id={firstPartStateNames.major}
+            name={firstPartStateNames.major}
             label="Major"
             fullWidth
-            value={props[firstPartStateNames.gradeLevel]}
-            onChange={(newValue) => {props.handleFieldInputChange(newValue,firstPartStateNames.gradeLevel, true, false)}}
+            value={props[firstPartStateNames.major]}
+            onChange={(newValue) => {props.handleFieldInputChange(newValue,firstPartStateNames.major, true, false)}}
             className={props.classes.textField}
             margin="normal"
             variant="outlined"
