@@ -103,7 +103,7 @@ export const FieldInformationSection = (props) => {
             fullWidth
             autoComplete="company"
             value={props[firstPartStateNames.title]}
-            onChange={(newValue) => {props.handleTextValueChange(newValue,firstPartStateNames.title, true, false)}}
+            onChange={(newValue) => {props.handleFieldInputChange(newValue,firstPartStateNames.title, true, false)}}
             className={props.classes.textField}
             margin="normal"
             variant="outlined"

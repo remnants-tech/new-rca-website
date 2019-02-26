@@ -19,9 +19,52 @@ import {firstPartStates} from './Registration/RegistrationConstants';
 import {secondPartStates} from './Registration/RegistrationConstants';
 import {RegistrationDrawer} from './Registration/RegistrationDrawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 const FIRST_PART_STATE = "firstPartStates";
 const SECOND_PART_STATE = "secondPartStates";
+
+const SecondPartButtons = (props) => {
+  return (
+    <Grid container spacing={8}>
+      <Grid item xs={12} sm={6}>
+        <Button
+          variant="contained"
+          onClick={props.handleButtonChange}
+          fullWidth
+          className={props.classes.backButton}
+          >
+          <ArrowBackIcon />
+          Back
+        </Button>
+      </Grid>
+      <Grid item xs={12} sm={6}>
+        <Button
+          onClick={props.handleRegistrationPost}
+          variant="contained"
+          fullWidth
+          className={props.classes.nextButton}
+          >
+          Complete Registration
+          <ArrowForwardIcon />
+        </Button>
+      </Grid>
+    </Grid>
+  )
+}
+
+// TODO: need to create terms and conditions and privacy policy and then link them.
+const PrivacyPolicyTerms = () => {
+  return (
+    <Typography component="div">
+        By clicking the Complete Registration button,
+        you confirm that you have read and understood, and accept our Terms and Conditions and Privacy Policy
+    </Typography>
+  )
+}
 
 class RegistrationCardComponent extends React.Component {
   state = {
@@ -44,6 +87,20 @@ class RegistrationCardComponent extends React.Component {
     })
   }
 
+handleRegistrationPost = () => {
+  console.log("here");
+  return (
+    fetch("http://localhost:8000/api/event/1/register", {
+      method: "post",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({...this.state.firstPartStates,...this.state.secondPartStates})
+    })
+  )}
+
+
   render() {
     const { classes } = this.props;
     return (
@@ -60,10 +117,18 @@ class RegistrationCardComponent extends React.Component {
                   handleFieldInputChange= {this.handleFieldInputChange.bind(this)}
                   handleButtonChange= {this.handleRegistrationPageChange.bind(this)}
                   classes= {classes} /> :
-                <RegistrationSecondPart {...this.state[SECOND_PART_STATE]}
-                  handleFieldInputChange= {this.handleFieldInputChange.bind(this)}
-                  handleButtonChange= {this.handleRegistrationPageChange.bind(this)}
-                  classes= {classes} />
+                <React.Fragment>
+                  <RegistrationSecondPart {...this.state[SECOND_PART_STATE]}
+                    handleFieldInputChange= {this.handleFieldInputChange.bind(this)}
+                    handleButtonChange= {this.handleRegistrationPageChange.bind(this)}
+                    classes= {classes} />
+                  <SecondPartButtons
+                    handleButtonChange = {this.handleRegistrationPageChange.bind(this)}
+                    classes={classes}
+                    handleRegistrationPost = {this.handleRegistrationPost.bind(this)}
+                    />
+                  <PrivacyPolicyTerms />
+                </React.Fragment>
               }
           </Paper>
         </React.Fragment>
