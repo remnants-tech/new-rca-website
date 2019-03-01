@@ -108,13 +108,24 @@ export const indexPageStyles = theme => ({
   loginButton: {
     fontsize: 14,
     fontWeight: "bold",
-    padding: theme.spacing.unit * 1.5
+    padding: theme.spacing.unit * 1.2,
+    marginRight: theme.spacing.unit * 2
   },
   navBarSignupMsg: {
     width:150,
     padding: theme.spacing.unit * 1.5,
     fontsize: 14
-  }
+  },
+  avatar: {
+    backgroundColor:"#242A2E",
+    fontSize: 16,
+    fontWeight: "Bold",
+    display: "flex",
+    float:"left",
+    marginRight: theme.spacing.unit * 3,
+    marginLeft: theme.spacing.unit * 2,
+    marginTop: theme.spacing.unit * .3
+  },
 });
 
 export const textFieldStyles = theme => ({
@@ -179,6 +190,63 @@ export const createAccountFirstStepStyles = theme => ({
 export const landingPageStyles = theme => ({
   backgroundPaper: {
     backgroundImage: "url(static/" + landingPageBackgroundImage +")",
-    minHeight: "90vh"
+    minHeight: "75vh",
+    color:"white",
+    backgroundRepeat: "no-repeat",
+    backgroundSize:"100%"
+  },
+  mainText: {
+    color:"white"
+  },
+  underline: {
+    color:"white",
+    marginTop: theme.spacing.unit * 8
+  },
+  signUpButton: {
+    color:"blue",
+    backgroundColor:"#ffffff",
+    paddingTop: theme.spacing.unit * 1.5,
+    paddingBottom: theme.spacing.unit * 1.5
+  },
+  signUpButtonLabel: {
+    marginLeft: theme.spacing.unit * 15
+  },
+  footer: {
+    minHeight:"15vh",
+    backgroundColor:" #13171A"
+  },
+  avatar: {
+    backgroundColor:"#242A2E",
+    fontSize: 16,
+    fontWeight: "Bold",
+    display: "flex",
+    float:"left",
+    marginTop: theme.spacing.unit * 3
+  },
+  rmText: {
+    color:"#D8D8D8",
+    marginLeft: theme.spacing.unit,
+    display: "flex",
+    float:"left",
+    marginTop: theme.spacing.unit * 4
+  },
+  menuText: {
+    color: "#A4A4A4",
+    marginTop: theme.spacing.unit * 4,
+    display: "flex",
+    flexWrap: "wrap"
+  },
+  menuSubText: {
+    color: "#A4A4A4",
+    marginTop: theme.spacing.unit
+  },
+  copyrightSection: {
+    minHeight:"5vh",
+    backgroundColor:"#000000"
+  },
+  copyrightText: {
+    color: "#8C8C8C",
+    fontSize: 10,
+    marginTop: theme.spacing.unit * 2
   }
 })

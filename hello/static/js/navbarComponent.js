@@ -15,6 +15,7 @@ import Tab from '@material-ui/core/Tab';
 import {navBarStyles} from './styleConstants';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import Avatar from '@material-ui/core/Avatar';
 
 export const NavBar = (props) => {
   return (
@@ -26,10 +27,11 @@ export const NavBar = (props) => {
           spacing={24}
         >
           <Grid item>
+            <Avatar className={props.classes.avatar}>RM</Avatar>
             <Tabs value={0} onChange={props.handleTabChange} className={props.classes.tab}>
+              <Tab label="Home" classes={{label: props.classes.label}} />
               <Tab label="About us" classes={{label: props.classes.label}} />
               <Tab label="Registration" classes={{label: props.classes.label}}/>
-              <Tab label="LogIn" classes={{label: props.classes.label}} className={props.classes.tab}/>
             </Tabs>
           </Grid>
             {
@@ -52,12 +54,18 @@ export const NavBar = (props) => {
                 </Grid>
               </React.Fragment>
                :
-             <Button
-               color="inherit"
-               onClick={() => props.handleLoginSignUpButtons(props.isLoginPage)}
-               className={props.classes.loginButton}>
-                 Log in
-             </Button>
+             <React.Fragment>
+               <Grid item>
+                 <Button
+                   color="inherit"
+                   onClick={() => props.handleLoginSignUpButtons(props.isLoginPage)}
+                   className={props.classes.loginButton}>
+                     Log in
+                 </Button>
+                 <Typography></Typography>
+               </Grid>
+             </React.Fragment>
+
             }
       </Grid>
       </AppBar>

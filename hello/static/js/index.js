@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import MainPageContainer from './MainPageContainer';
+import LandingPageContainer from './LandingPage/LandingPageContainer';
 
 const REGISTRATION_PAGE = "Registration";
 const LOGIN_PAGE = "login";

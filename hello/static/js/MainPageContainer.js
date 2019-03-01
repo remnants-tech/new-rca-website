@@ -14,6 +14,7 @@ import Paper from '@material-ui/core/Paper';
 import {indexPageStyles}  from './styleConstants';
 import LogInContainer from './Login/LogInContainer';
 import CreateAccountContainer from './CreateAccount/CreateAccountContainer';
+import LandingPageContainer from './LandingPage/LandingPageContainer';
 
 const REGISTRATION_PAGE = "Registration";
 const LOGIN_PAGE = "login";
@@ -23,17 +24,17 @@ const CREATE_ACCOUNT = "createAccount";
 
 class MainPageContainer extends React.Component {
   state = {
-    currentPage: REGISTRATION_PAGE,
+    currentPage: LANDING_PAGE,
   }
 
   handleTabChange = (event, value) => {
     let currentPage = REGISTRATION_PAGE;
     if (value === 0) {
-      currentPage = ABOUT_US;
+      currentPage = LANDING_PAGE;
     } else if (value === 1) {
-      currentPage = REGISTRATION_PAGE;
+      currentPage = ABOUT_US;
     } else if (value === 2) {
-      currentPage = LOGIN_PAGE;
+      currentPage = REGISTRATION_PAGE;
     } else {
       currentPage = LANDING_PAGE;
     }
@@ -43,6 +44,10 @@ class MainPageContainer extends React.Component {
   handleLoginSignUpButtons = (isLoginPage) => {
     const pageDirected = isLoginPage ? CREATE_ACCOUNT : LOGIN_PAGE
     this.setState({currentPage: pageDirected});
+  }
+
+  handleLandingPageSignUpButton = () => {
+    this.setState({currentPage: REGISTRATION_PAGE})
   }
 
   render () {
@@ -59,6 +64,8 @@ class MainPageContainer extends React.Component {
           {(this.state.currentPage === REGISTRATION_PAGE) && <RegistrationCardComponent />}
           {(this.state.currentPage === LOGIN_PAGE) && <LogInContainer />}
           {(this.state.currentPage === CREATE_ACCOUNT) && <CreateAccountContainer />}
+          {(this.state.currentPage === LANDING_PAGE) && <LandingPageContainer
+            handleLandingPageSignUpButton={this.handleLandingPageSignUpButton.bind(this)} />}
         </Paper>
       </React.Fragment>
     )
