@@ -16,6 +16,75 @@ import {navBarStyles} from './styleConstants';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
+import {REGISTRATION_PAGE, LOGIN_PAGE, ABOUT_US, LANDING_PAGE, CREATE_ACCOUNT, MY_ACCOUNT} from './MainPageConstants';
+
+
+const SignUpMessageSection = (props) => {
+  return (
+    <React.Fragment>
+      <Grid item>
+        <Grid container spacing={0}>
+          <Grid item xs={12} sm={7}>
+              <Typography variant="body1" className={props.classes.navBarSignupMsg}>Are you new here?</Typography>
+          </Grid>
+          <Grid item xs={12} sm={5}>
+            <Button
+              color="primary"
+              onClick={() => props.handlePageNavigation(CREATE_ACCOUNT)}
+              className={props.classes.loginButton}>
+                Sign up
+            </Button>
+          </Grid>
+        </Grid>
+      </Grid>
+    </React.Fragment>
+  )
+}
+
+const GenericLoginMessageSection = (props) => {
+  return (
+    <React.Fragment>
+      <Grid item>
+        <Button
+          color="inherit"
+          onClick={() => props.handlePageNavigation(LOGIN_PAGE)}
+          className={props.classes.loginButton}>
+            Log in
+        </Button>
+        <Typography></Typography>
+      </Grid>
+    </React.Fragment>
+  )
+
+}
+
+const LoggedInMessageSection = (props) => {
+  return (
+    <React.Fragment>
+      <Grid item>
+        <Grid container spacing={0}>
+          <Grid item xs={12} sm={7}>
+            <Button
+              color="primary"
+              fullWidth
+              onClick={() => props.handlePageNavigation(MY_ACCOUNT)}
+              className={props.classes.loginButton}>
+                My Acccount
+            </Button>
+          </Grid>
+          <Grid item xs={12} sm={5}>
+            <Button
+              color="primary"
+              onClick={() => props.handlePageNavigation(LANDING_PAGE)}
+              className={props.classes.loginButton}>
+                Log Out
+            </Button>
+          </Grid>
+        </Grid>
+      </Grid>
+    </React.Fragment>
+  )
+}
 
 export const NavBar = (props) => {
   return (
@@ -34,39 +103,11 @@ export const NavBar = (props) => {
               <Tab label="Registration" classes={{label: props.classes.label}}/>
             </Tabs>
           </Grid>
-            {
-              props.isLoginPage ?
-              <React.Fragment>
-                <Grid item>
-                  <Grid container spacing={0}>
-                    <Grid item xs={12} sm={7}>
-                        <Typography variant="body1" className={props.classes.navBarSignupMsg}>Are you new here?</Typography>
-                    </Grid>
-                    <Grid item xs={12} sm={5}>
-                      <Button
-                        color="primary"
-                        onClick={() => props.handleLoginSignUpButtons(props.isLoginPage)}
-                        className={props.classes.loginButton}>
-                          Sign up
-                      </Button>
-                    </Grid>
-                  </Grid>
-                </Grid>
-              </React.Fragment>
-               :
-             <React.Fragment>
-               <Grid item>
-                 <Button
-                   color="inherit"
-                   onClick={() => props.handleLoginSignUpButtons(props.isLoginPage)}
-                   className={props.classes.loginButton}>
-                     Log in
-                 </Button>
-                 <Typography></Typography>
-               </Grid>
-             </React.Fragment>
-
-            }
+            {props.pageType === LOGIN_PAGE && <SignUpMessageSection {...props} />}
+            {props.pageType === LANDING_PAGE && <GenericLoginMessageSection {...props} />}
+            {props.pageType === CREATE_ACCOUNT && <GenericLoginMessageSection {...props} />}
+            {props.pageType === REGISTRATION_PAGE && <LoggedInMessageSection {...props} />}
+            {props.pageType === MY_ACCOUNT && <LoggedInMessageSection {...props} />}
       </Grid>
       </AppBar>
     </React.Fragment>

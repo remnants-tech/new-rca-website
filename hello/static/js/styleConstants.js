@@ -109,7 +109,15 @@ export const indexPageStyles = theme => ({
     fontsize: 14,
     fontWeight: "bold",
     padding: theme.spacing.unit * 1.2,
-    marginRight: theme.spacing.unit * 2
+    marginRight: theme.spacing.unit * 2,
+    marginTop: theme.spacing.unit * .2
+  },
+  myAccountButton: {
+    fontsize: 14,
+    fontWeight: "bold",
+    padding: theme.spacing.unit * 5,
+    marginRight: theme.spacing.unit * 2,
+    marginTop: theme.spacing.unit * .2
   },
   navBarSignupMsg: {
     width:150,
@@ -248,5 +256,103 @@ export const landingPageStyles = theme => ({
     color: "#8C8C8C",
     fontSize: 10,
     marginTop: theme.spacing.unit * 2
+  }
+})
+
+export const myAccountContainerStyles = theme => ({
+  upperSidePaper: {
+    backgroundColor: "white",
+    flexGrow: 1
+  },
+  centeredTabs: {
+    flexGrow: 1
+  },
+  mainText: {
+    marginTop: theme.spacing.unit * 10
+  },
+  bottomHalfPaper: {
+    backgroundColor: "#F3F3F3",
+    flexGrow: 1
+  },
+  bottomHalfHeading: {
+    marginTop: theme.spacing.unit * 4
+  },
+  eventCard: {
+    backgroundImage: "url(static/" + landingPageBackgroundImage +")",
+    backgroundRepeat: "no-repeat",
+    backgroundSize:"100%",
+    color: "white",
+    maxHeight: "80vh"
+  },
+  eventTitle: {
+    paddingTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 15,
+    color: "#E7E9F7",
+    marginLeft: theme.spacing.unit * 6
+  },
+  eventBottomText: {
+    marginBottom: theme.spacing.unit * 2,
+    color:"#E7E9F7"
+  },
+  eventGeneralText: {
+    color:"#E7E9F7",
+  },
+  eventDate: {
+    color:"#E7E9F7",
+  },
+  eventLocation: {
+    marginBottom: theme.spacing.unit * 2,
+    display: "flex",
+    flexDirection:"column"
+  },
+  nextButton: {
+    marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit *2,
+    padding: theme.spacing.unit,
+    backgroundColor:"#054ada",
+    color:"white"
+  },
+  backButton: {
+    marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit *2,
+    padding: theme.spacing.unit,
+    backgroundColor:"#373D42",
+    color:"white"
+  },
+  buttonLabel: {
+    float:"right"
+  },
+  subHeading: {
+    marginBottom: 0,
+    paddingBottom: 0
+  },
+  textField: {
+    backgroundColor:"#ffffff",
+    marginTop: 0
+  },
+  disabledTextField: {
+    backgroundColor:"#DCDCDC",
+    marginTop: 0
+  },
+  sectionTitle: {
+    marginTop: theme.spacing.unit * 2,
+  }
+})
+
+export const reusableInputSections = theme => ({
+  subHeading: {
+    marginBottom: 0,
+    paddingBottom: 0
+  },
+  textField: {
+    backgroundColor:"#ffffff",
+    marginTop: 0
+  },
+  disabledTextField: {
+    backgroundColor:"#DCDCDC",
+    marginTop: 0
+  },
+  sectionTitle: {
+    marginTop: theme.spacing.unit * 3,
   }
 })

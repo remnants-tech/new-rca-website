@@ -68,7 +68,6 @@ export const BasicInformationSection = (props) => {
             fullWidth
             label="Date of Birth"
             type="date"
-            defaultValue="2018-02-10"
             value={props[firstPartStateNames.dob]}
             onChange={(newValue) => {props.handleFieldInputChange(newValue,firstPartStateNames.dob, true, false)}}
             InputLabelProps={{

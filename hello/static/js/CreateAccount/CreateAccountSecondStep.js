@@ -54,7 +54,7 @@ export const CreateAccountSecondStep = (props) => {
         </Grid>
         <Grid item xs={12} sm={4}>
           <Typography variant="subtitle1" className={props.classes.subHeading}>
-            한국이름 Korean name (optional)
+            Preferred Name/Foreign Name
           </Typography>
           <TextField
             id={createAccountStateNames.koreanName}

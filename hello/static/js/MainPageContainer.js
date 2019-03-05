@@ -7,6 +7,7 @@
 */
 import React from 'react'
 import ReactDOM from 'react-dom'
+import CssBaseline from '@material-ui/core/CssBaseline';
 import {NavBar} from './navbarComponent'
 import { withStyles } from '@material-ui/core/styles';
 import RegistrationCardComponent from './RegistrationCardComponent'
@@ -15,12 +16,9 @@ import {indexPageStyles}  from './styleConstants';
 import LogInContainer from './Login/LogInContainer';
 import CreateAccountContainer from './CreateAccount/CreateAccountContainer';
 import LandingPageContainer from './LandingPage/LandingPageContainer';
+import MyAccountContainer from './MyAccount/MyAccountContainer';
+import {REGISTRATION_PAGE, LOGIN_PAGE, ABOUT_US, LANDING_PAGE, CREATE_ACCOUNT, MY_ACCOUNT} from './MainPageConstants';
 
-const REGISTRATION_PAGE = "Registration";
-const LOGIN_PAGE = "login";
-const ABOUT_US = "aboutUs";
-const LANDING_PAGE = "landingPage";
-const CREATE_ACCOUNT = "createAccount";
 
 class MainPageContainer extends React.Component {
   state = {
@@ -46,6 +44,10 @@ class MainPageContainer extends React.Component {
     this.setState({currentPage: pageDirected});
   }
 
+  handlePageNavigation = (pageType) => {
+    this.setState({currentPage:pageType})
+  }
+
   handleLandingPageSignUpButton = () => {
     this.setState({currentPage: REGISTRATION_PAGE})
   }
@@ -54,18 +56,21 @@ class MainPageContainer extends React.Component {
     const { classes } = this.props;
     return (
       <React.Fragment>
+        <CssBaseline />
         <Paper>
           <NavBar
             classes={classes}
             handleTabChange={this.handleTabChange.bind(this)}
-            handleLoginSignUpButtons={this.handleLoginSignUpButtons.bind(this)}
-            isLoginPage={this.state.currentPage === LOGIN_PAGE}
+            handlePageNavigation={this.handlePageNavigation.bind(this)}
+            pageType={this.state.currentPage}
           />
           {(this.state.currentPage === REGISTRATION_PAGE) && <RegistrationCardComponent />}
           {(this.state.currentPage === LOGIN_PAGE) && <LogInContainer />}
           {(this.state.currentPage === CREATE_ACCOUNT) && <CreateAccountContainer />}
           {(this.state.currentPage === LANDING_PAGE) && <LandingPageContainer
             handleLandingPageSignUpButton={this.handleLandingPageSignUpButton.bind(this)} />}
+          {(this.state.currentPage === MY_ACCOUNT) && <MyAccountContainer
+            handlePageNavigation={this.handlePageNavigation.bind(this)} />}
         </Paper>
       </React.Fragment>
     )
