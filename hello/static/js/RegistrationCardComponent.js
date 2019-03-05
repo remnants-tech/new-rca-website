@@ -110,26 +110,32 @@ handleRegistrationPost = () => {
           <RegistrationDrawer isFirstPage={this.state.isFirstPage} classes= {classes} />
           <div className={classes.toolbar} />
           <Paper className= {classes.paper}>
-            <Typography component="h1" variant="h4" allign="center">Register for</Typography>
-            <Typography component="h1" variant="h4" allign="center">College & Young Adults Conference</Typography>
-              {this.state.isFirstPage ?
-                <RegistrationFirstPart {...this.state[FIRST_PART_STATE]}
-                  handleFieldInputChange= {this.handleFieldInputChange.bind(this)}
-                  handleButtonChange= {this.handleRegistrationPageChange.bind(this)}
-                  classes= {classes} /> :
-                <React.Fragment>
-                  <RegistrationSecondPart {...this.state[SECOND_PART_STATE]}
-                    handleFieldInputChange= {this.handleFieldInputChange.bind(this)}
-                    handleButtonChange= {this.handleRegistrationPageChange.bind(this)}
-                    classes= {classes} />
-                  <SecondPartButtons
-                    handleButtonChange = {this.handleRegistrationPageChange.bind(this)}
-                    classes={classes}
-                    handleRegistrationPost = {this.handleRegistrationPost.bind(this)}
-                    />
-                  <PrivacyPolicyTerms />
-                </React.Fragment>
-              }
+            <Grid container spacing={8}>
+              <Grid item xs={12} sm={1} />
+              <Grid item xs={12} sm={10}>
+                <Typography component="h1" variant="h4" allign="center">Register for</Typography>
+                <Typography component="h1" variant="h4" allign="center">College & Young Adults Conference</Typography>
+                  {this.state.isFirstPage ?
+                    <RegistrationFirstPart {...this.state[FIRST_PART_STATE]}
+                      handleFieldInputChange= {this.handleFieldInputChange.bind(this)}
+                      handleButtonChange= {this.handleRegistrationPageChange.bind(this)}
+                      classes= {classes} /> :
+                    <React.Fragment>
+                      <RegistrationSecondPart {...this.state[SECOND_PART_STATE]}
+                        handleFieldInputChange= {this.handleFieldInputChange.bind(this)}
+                        handleButtonChange= {this.handleRegistrationPageChange.bind(this)}
+                        classes= {classes} />
+                      <SecondPartButtons
+                        handleButtonChange = {this.handleRegistrationPageChange.bind(this)}
+                        classes={classes}
+                        handleRegistrationPost = {this.handleRegistrationPost.bind(this)}
+                        />
+                      <PrivacyPolicyTerms />
+                    </React.Fragment>
+                  }
+              </Grid>
+              <Grid item xs={12} sm={1} />
+            </Grid>
           </Paper>
         </React.Fragment>
       </div>
