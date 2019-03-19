@@ -85,7 +85,7 @@ export const BillingAddressSection = (props) => {
             name={secondPartStateNames.billingAddressCompanyAptEtc}
             label="Company,Apt,Suit, Unit"
             fullWidth
-            value={props[secondPartStateNames.billingAddressStreetAddress]}
+            value={props[secondPartStateNames.billingAddressCompanyAptEtc]}
             onChange={(newValue) => {props.handleFieldInputChange(newValue,secondPartStateNames.billingAddressStreetAddress, false, false)}}
             className={props.classes.textField}
             margin="normal"

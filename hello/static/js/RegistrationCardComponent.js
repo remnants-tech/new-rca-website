@@ -90,7 +90,7 @@ class RegistrationCardComponent extends React.Component {
 handleRegistrationPost = () => {
   console.log("here");
   return (
-    fetch("http://localhost:8000/api/event/1/register", {
+    fetch("http://localhost:8000/api/hello/event/1/register", {
       method: "post",
       headers: {
         Accept: "application/json",
